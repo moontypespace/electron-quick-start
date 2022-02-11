@@ -5,7 +5,7 @@ function get_font() {
 
     PythonShell.runString('x=1+1;print(x)', null, function (err) {
       if (err) throw err;
-      console.log('finished');
+      console.log('python-shell ready :)');
     });
 
     var font_path = document.getElementById("font_path").value
