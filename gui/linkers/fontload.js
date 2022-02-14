@@ -12,8 +12,8 @@ function get_font() {
     document.getElementById("font_path").value = "";
 
     let options = {
-        scriptPath : path.join(__dirname, '/../engine/'),
-        pythonPath : '/usr/bin/python3',
+        scriptPath : path.join(__dirname, '/engine/'),
+        pythonPath : 'python/bin/python3.9',
         pythonOptions: ['-u'], // get print results in real-time
         args : [font_path]
     }
