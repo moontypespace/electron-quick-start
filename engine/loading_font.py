@@ -1,5 +1,6 @@
 import sys
 from fontTools.ttLib import TTFont
+# electron-builder --mac
 
 font_path = sys.argv[1]
 
