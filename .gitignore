@@ -3,3 +3,4 @@ node_modules
 /gui/python
 **.tar.gz
 /venv
+/gui/dist

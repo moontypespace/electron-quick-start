@@ -1,0 +1,1 @@
+iconutil -c icns /Users/ollimeier/Documents/GitHub/olli/electron-quick-start/myicon.iconset

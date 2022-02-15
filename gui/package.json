@@ -1,20 +1,21 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "FontDev",
+  "version": "0.0.1",
+  "description": "A minimal font post production application.",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Fonts",
+    "Development",
+    "Engineering",
+    "Tables",
+    "Glyphs",
+    "Diff"
   ],
-  "author": "GitHub",
+  "author": "Olli Meier",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^17.0.0",
@@ -22,10 +23,12 @@
     "electron-packager": "^15.4.0"
   },
   "dependencies": {
-    "python-shell": "^3.0.1",
-    "sweetalert2": "^11.4.0"
+    "python-shell": "^3.0.1"
   },
   "build": {
+    "mac": {
+      "icon": "./myicon.icns"
+    },
     "extraResources": [
       {
         "from": "python",
