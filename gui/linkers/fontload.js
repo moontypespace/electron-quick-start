@@ -1,3 +1,32 @@
+console.log('8 my very first app: console :)');
+const path = require('path')
+
+const cp = require("child_process");
+const util = require("util");
+const execFile = util.promisify(cp.execFile);
+
+const fs = require("fs");
+const {app} = require("electron");
+
+function findPython() {
+  const possibilities = [
+    // In packaged app
+    path.join(process.resourcesPath, "python", "bin", "python3.9"),
+    // In development
+    path.join(__dirname, "python", "bin", "python3.9"),
+  ];
+  for (const path of possibilities) {
+    if (fs.existsSync(path)) {
+      console.log('path_to_python path: ', path)
+      return path;
+    }
+  }
+  console.log("Could not find python3, checked", possibilities);
+  app.quit();
+}
+
+var path_to_python = findPython();
+console.log('path_to_python: ', path_to_python);
 
 function get_font() {
     let {PythonShell} = require('python-shell')
@@ -15,7 +44,7 @@ function get_font() {
 
     let options = {
         scriptPath : path.join(__dirname, '/engine/'),
-        pythonPath : 'python/bin/python3.9',
+        pythonPath : path_to_python,
         pythonOptions: ['-u'], // get print results in real-time
         args : [font_path]
     }

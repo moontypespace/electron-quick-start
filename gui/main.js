@@ -2,29 +2,6 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
-const cp = require("child_process");
-const util = require("util");
-const execFile = util.promisify(cp.execFile);
-
-const fs = require("fs");
-
-function findPython() {
-  const possibilities = [
-    // In packaged app
-    path.join(process.resourcesPath, "python", "bin", "python3.9"),
-    // In development
-    path.join(__dirname, "python", "bin", "python3.9"),
-  ];
-  for (const path of possibilities) {
-    if (fs.existsSync(path)) {
-      console.log('path_to_python path: ', path)
-      return path;
-    }
-  }
-  console.log("Could not find python3, checked", possibilities);
-  app.quit();
-}
-
 
 function createWindow () {
   // Create the browser window.
@@ -44,12 +21,6 @@ function createWindow () {
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
 
-  //path_to_python = findPython();
-  console.log('path_to_python: ', findPython());
-  //await execFile(path_to_python, ["-m", "random"]);
-
-  //BrowserWindow.GLOBAL_DATA = { 'path_to_python': findPython()};
-
 }
 
 // This method will be called when Electron has finished
@@ -57,6 +28,7 @@ function createWindow () {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow()
+  console.log('4 my very first app: console :)');
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
@@ -74,6 +46,5 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
 
 
