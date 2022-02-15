@@ -1,4 +1,5 @@
 import sys
+import io
 from fontTools.ttLib import TTFont
 # electron-builder --mac
 # pip install --target=/Users/ollimeier/Documents/GitHub/olli/electron-quick-start/gui/python/lib/python3.9/site-packages fonttools
@@ -7,16 +8,18 @@ from fontTools.ttLib import TTFont
 # pip install --target=/Users/ollimeier/Documents/GitHub/olli/electron-quick-start/gui/python/lib/python3.9/site-packages spawn
 
 font_path = sys.argv[1]
+font_table_tag = sys.argv[2]
 
-def get_best_family_name(font_obj):
-    for name_id in [21, 16, 1]:
-        name = font_obj['name'].getDebugName(name_id)
-        if name is not None:
-            return name
+def get_font_table_ttx(font_path, font_table_tag):
+    font_obj = TTFont(font_path)
+    f = io.StringIO()
+    font_obj.saveXML(f, tables=[font_table_tag])
+    ttx = f.getvalue().splitlines()
+    ttx = ttx[3:-2]  # strip XML header and <ttFont> element
+    return ttx
 
-font_obj = TTFont(font_path)
-fam_name = get_best_family_name(font_obj)
+font_table_ttx = get_font_table_ttx(font_path, font_table_tag)
 
-print(f"fam_name: {fam_name}")
+print(font_table_ttx)
 
 sys.stdout.flush()
