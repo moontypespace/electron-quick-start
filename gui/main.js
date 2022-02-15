@@ -43,6 +43,13 @@ function createWindow () {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
+
+  //path_to_python = findPython();
+  console.log('path_to_python: ', findPython());
+  //await execFile(path_to_python, ["-m", "random"]);
+
+  //BrowserWindow.GLOBAL_DATA = { 'path_to_python': findPython()};
+
 }
 
 // This method will be called when Electron has finished
@@ -68,7 +75,5 @@ app.on('window-all-closed', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-path_to_python = findPython();
-console.log('path_to_python: ', path_to_python);
-//await execFile(path_to_python, ["-m", "random"]);
+
 

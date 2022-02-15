@@ -7,6 +7,8 @@ function get_font() {
       if (err) throw err;
       console.log('python-shell ready :)');
     });
+    //var path_to_python = GLOBAL_DATA['path_to_python']
+    //console.log('get_font path_to_python: ', path_to_python);
 
     var font_path = document.getElementById("font_path").value
     document.getElementById("font_path").value = "";
