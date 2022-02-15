@@ -28,6 +28,26 @@ function findPython() {
 var path_to_python = findPython();
 console.log('path_to_python: ', path_to_python);
 
+function findPyEngine() {
+  const possibilities = [
+    // In packaged app
+    path.join(process.resourcesPath, "engine"),
+    // In development
+    path.join(__dirname, "engine"),
+  ];
+  for (const path of possibilities) {
+    if (fs.existsSync(path)) {
+      console.log('path_to_python path: ', path)
+      return path;
+    }
+  }
+  console.log("Could not find 'engine', checked", possibilities);
+  app.quit();
+}
+
+var path_to_engine = findPyEngine();
+console.log('path_to_engine: ', path_to_engine);
+
 function get_font() {
     let {PythonShell} = require('python-shell')
     let path = require("path")
@@ -43,7 +63,7 @@ function get_font() {
     document.getElementById("font_path").value = "";
 
     let options = {
-        scriptPath : path.join(__dirname, '/engine/'),
+        scriptPath : path_to_engine,
         pythonPath : path_to_python,
         pythonOptions: ['-u'], // get print results in real-time
         args : [font_path]
