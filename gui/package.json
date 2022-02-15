@@ -1,7 +1,7 @@
 {
   "name": "FontDev",
   "version": "0.0.1",
-  "description": "A minimal font post production application.",
+  "description": "A font post production application using python.",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
