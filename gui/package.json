@@ -28,8 +28,11 @@
   "build": {
     "extraResources": [
       {
-        "from": "/python",
-        "to": ""
+        "from": "python",
+        "to": "python",
+        "filter": [
+          "**/*"
+        ]
       }
     ]
   }
