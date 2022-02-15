@@ -27,7 +27,8 @@
   },
   "build": {
     "mac": {
-      "icon": "./myicon.icns"
+      "icon": "./myicon.icns",
+      "category": "public.app-category.developer-tools"
     },
     "extraResources": [
       {
